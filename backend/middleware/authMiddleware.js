@@ -2,7 +2,9 @@ import jwt from "jsonwebtoken";
 
 // Leer cookies 
 const checkAuth = (req, res, next) => {
+  console.log("Cookies recibidas:", req.cookies);
   const token = req.cookies.access_token; // Acceder a la cookie
+  console.log(token)
   if (!token) {
     return res.status(401).json({ message: "No autorizado" });
   }
