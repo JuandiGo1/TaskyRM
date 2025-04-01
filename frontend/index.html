@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskyApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TaskyRM</h1>
+        </header>
+
+        <main>
+            <section id="auth-section">
+                <div id="login-form">
+                    <h2>Iniciar Sesión</h2>
+                    <form id="loginForm">
+                        <input type="text" id="loginUsername" placeholder="Usuario" required>
+                        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                        <button type="submit">Iniciar Sesión</button>
+                        <p id="login-error" class="error-message"></p>
+                    </form>
+                    <p>¿No tienes cuenta? <a href="#" id="show-register-link">Regístrate</a></p>
+                </div>
+
+                <div id="register-form" style="display: none;">
+                    <h2>Regístrate</h2>
+                    <form id="registerForm">
+                        <input type="text" id="registerUsername" placeholder="Usuario" required>
+                        <input type="password" id="registerPassword" placeholder="Contraseña" required>
+                        <button type="submit">Registrarse</button>
+                        <p id="register-error" class="error-message"></p>
+                    </form>
+                    <p>¿Ya tienes cuenta? <a href="#" id="show-login-link">Inicia Sesión</a></p>
+                </div>
+            </section>
+
+
+            <section id="task-section" style="display: none;">
+                <div class="controls">
+                    <button id="logout-button">Cerrar Sesión</button>
+                    <select id="filter-tasks">
+                        <option value="all">Todas las tareas</option>
+                        <option value="pending">Pendientes</option>
+                        <option value="completed">Completadas</option>
+                    </select>
+                </div>
+
+                <div id="task-form">
+                    <h2>Agregar Nueva Tarea</h2>
+                    <form id="addTaskForm">
+                        <input type="text" id="taskTitle" placeholder="Título de la tarea" required>
+                        <textarea id="taskDescription" placeholder="Descripción"></textarea>
+                        <label for="taskDueDate">Fecha de Vencimiento:</label>
+                        <input type="date" id="taskDueDate">
+                        <select id="taskPriority">
+                            <option value="Puedo procastinar 🥱">Puedo procastinar 🥱</option>
+                            <option value="Deberia ir haciendo esto 🙂‍↕️">Deberia ir haciendo esto 🙂‍↕️</option>
+                            <option value="Ahora o nunca! 😨">Ahora o nunca! 😨</option>
+                        </select>
+                        <button type="submit">Agregar Tarea</button>
+                        <p id="add-task-error" class="error-message"></p>
+                    </form>
+                </div>
+
+                <div id="task-list-container">
+                    <h2>Lista de Tareas</h2>
+                    <ul id="task-list">
+                        <!-- Las tareas se agregarán aquí -->
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 TaskyApp - Frontend por JMJ</p>
+        </footer>
+    </div>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

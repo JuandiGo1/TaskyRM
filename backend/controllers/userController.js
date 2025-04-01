@@ -44,7 +44,6 @@ export const registerUser = async (req, res) => {
 // Iniciar sesión y generar token JWT
 export const loginUser = async (req, res) => {
     try {
-        console.log("Cuerpo de la solicitud:", req.body);
         const { username, password } = req.body;
         
         if (!username || !password) {
@@ -63,14 +62,14 @@ export const loginUser = async (req, res) => {
         // Generar token JWT
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-        console.log("acc token :")
+
         res.cookie('access_token', token, {
             httpOnly: true,
             maxAge: 3600000, // 1 hora en milisegundos
-            secure: process.env.NODE_ENV === 'production', // Solo en HTTPS en producción
-            sameSite: 'strict' // Protección contra CSRF
+            secure: true, // Solo en HTTPS en producción
+            sameSite: 'None' // Protección contra CSRF
         })
-            .json({ message: "Inicio de sesión exitoso", token });
+            .send({ message: "Inicio de sesión exitoso", token });
     } catch (error) {
         res.status(500).json({ message: "Error en el servidor", error });
     }

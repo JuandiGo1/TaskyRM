@@ -11,7 +11,12 @@ dotenv.config({ path: './backend/.env' });
 const app = express();
 
 // Habilitar CORS para todas las rutas
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "http://127.0.0.1:8080",
+    credentials: true
+  }));
+
+
 app.use(cookieParser());
 app.use(express.json());
 
