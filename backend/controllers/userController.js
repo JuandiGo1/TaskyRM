@@ -67,8 +67,8 @@ export const loginUser = async (req, res) => {
         res.cookie('access_token', token, {
             httpOnly: true,
             maxAge: 3600000, // 1 hora en milisegundos
-            secure: false, // Solo en HTTPS en producción
-            sameSite: 'lax' // Protección contra CSRF
+            secure: true, // Solo en HTTPS en producción
+            sameSite: 'None' // Protección contra CSRF
         })
             .send({ message: "Inicio de sesión exitoso", token });
     } catch (error) {

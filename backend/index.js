@@ -12,7 +12,7 @@ const app = express();
 
 // Habilitar CORS para todas las rutas
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://127.0.0.1:5500",
+    origin: process.env.FRONTEND_URL || "http://127.0.0.1:8080",
     credentials: true
   }));
 
