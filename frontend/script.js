@@ -373,10 +373,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (filterValue === 'completed') {
             filteredTasks = tasks.filter(task => task.complete);
-        } else if (filterValue === 'pending') {
-            filteredTasks = tasks.filter(task => !task.complete);
+        } else if (filterValue === 'all') {
+            filteredTasks = tasks;
         } else {
-            filteredTasks = tasks; // 'all' or default
+            filteredTasks = tasks.filter(task => !task.complete); // pendientes por default
+            
         }
         renderTasks(filteredTasks);
     });

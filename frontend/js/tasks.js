@@ -96,16 +96,16 @@ const TaskManager = {
         switch(filterType) {
             case 'completed':
                 return this.tasks.filter(task => task.complete);
-            case 'pending':
-                return this.tasks.filter(task => !task.complete);
-            default:
+            case 'all':
                 return this.tasks;
+            default:   
+                return this.tasks.filter(task => !task.complete);
         }
     },
     
     // Devuelve todas las tareas
     getAllTasks() {
-        return this.tasks;
+        return this.tasks.filter(task => !task.complete);
     }
 };
 
