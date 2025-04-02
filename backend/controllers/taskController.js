@@ -90,8 +90,7 @@ export const completeTask = async (req, res) => {
 // Obtener tareas de un usuario organizadas por prioridad
 export const getUserTasksByPriority = async (req, res) => {
   try {
-    const tasks = await TaskModel.find({ user: req.user.id})
-      .sort({ priorityValue: 1, dueDate: 1 }); // Ordenar por prioridad numérica y luego por fecha de vencimiento
+    const tasks = await TaskModel.find({ user: req.user.id}).sort({ priorityValue: 1, dueDate: 1 }); // Ordenar por prioridad numérica y luego por fecha de vencimiento
 
     res.json({ message: "Tareas obtenidas con éxito", tasks });
   } catch (error) {

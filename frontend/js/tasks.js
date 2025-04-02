@@ -47,7 +47,8 @@ const TaskManager = {
     // Elimina una tarea por su ID
     async deleteTask(taskId) {
         const response = await fetch(`${API_BASE_URL}/task/delete/${taskId}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            credentials: 'include'  // Añade esta línea
         });
         
         if (!response.ok) {
@@ -61,7 +62,8 @@ const TaskManager = {
     // Cambia el estado de completado de una tarea
     async toggleComplete(taskId) {
         const response = await fetch(`${API_BASE_URL}/task/complete/${taskId}`, {
-            method: 'PUT'
+            method: 'PUT',
+            credentials: 'include'  // Añade esta línea
         });
         
         if (!response.ok) {
@@ -77,6 +79,7 @@ const TaskManager = {
         const response = await fetch(`${API_BASE_URL}/task/edit/${taskId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',  // Añade esta línea
             body: JSON.stringify(updatedTask)
         });
         

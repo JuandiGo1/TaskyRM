@@ -60,7 +60,7 @@ const UI = {
     },
 
     // Carga datos de una tarea en el formulario para edición
-    loadTaskInForm(task, formElement) {
+    loadTaskForm(task, formElement) {
         const titleInput = document.getElementById('taskTitle');
         const descriptionInput = document.getElementById('taskDescription');
         const dueDateInput = document.getElementById('taskDueDate'); 
