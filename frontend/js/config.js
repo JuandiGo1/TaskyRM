@@ -1,7 +1,7 @@
 // Configuraciones globales de la aplicación
 
 // URL base para las peticiones a la API
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://tasky-rm-backend.vercel.app';
 
 // Selectores de elementos DOM comunes
 const SELECTORS = {
