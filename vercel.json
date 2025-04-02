@@ -19,9 +19,7 @@
         "source": "/:path*",
         "destination": "https://tasky-rm-backend.vercel.app/:path*"
       }
-    ],
-    "staticFiles": {
-      "public": "public"
-    }
+    ]
+    
   }
   
