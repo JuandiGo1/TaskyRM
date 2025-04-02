@@ -74,6 +74,41 @@
             </section>
         </main>
 
+            <!-- Diálogo de confirmación personalizado -->
+            <div id="confirmation-modal" class="modal">
+                <div class="modal-content">
+                    <h3>Confirmar acción</h3>
+                    <p id="modal-message">¿Estás seguro de que deseas realizar esta acción?</p>
+                    <div class="modal-buttons">
+                        <button id="modal-cancel" class="modal-button cancel-button">Cancelar</button>
+                        <button id="modal-confirm" class="modal-button confirm-button">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal para edición de tareas -->
+            <div id="edit-task-modal" class="modal">
+                <div class="modal-content">
+                    <h3>Editar Tarea</h3>
+                    <form id="edit-task-form">
+                        <input type="text" id="edit-task-title" placeholder="Título de la tarea" required>
+                        <textarea id="edit-task-description" placeholder="Descripción"></textarea>
+                        <label for="edit-task-due-date">Fecha de Vencimiento:</label>
+                        <input type="date" id="edit-task-due-date">
+                        <select id="edit-task-priority">
+                            <option value="Puedo procastinar 🥱">Puedo procastinar 🥱</option>
+                            <option value="Deberia ir haciendo esto 🙂‍↕️">Deberia ir haciendo esto 🙂‍↕️</option>
+                            <option value="Ahora o nunca! 😨">Ahora o nunca! 😨</option>
+                        </select>
+                        <div class="modal-buttons">
+                            <button type="button" id="edit-task-cancel" class="modal-button cancel-button">Cancelar</button>
+                            <button type="submit" class="modal-button confirm-button">Guardar Cambios</button>
+                        </div>
+                        <p id="edit-task-error" class="error-message"></p>
+                    </form>
+                </div>
+            </div>
+
         <footer>
             <p>© 2024 TaskyApp - Frontend por JMJ</p>
         </footer>
