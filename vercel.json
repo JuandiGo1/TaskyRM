@@ -10,21 +10,18 @@
         }
       }
     ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.html"
-      }
-    ],
     "rewrites": [
       {
         "source": "/task/:path*",
-        "destination": "https://taskyrm-backend.up.railway.app/task/:path*"
+        "destination": "https://tasky-rm-backend.vercel.app/task/:path*"
       },
       {
         "source": "/:path*",
-        "destination": "https://taskyrm-backend.up.railway.app/:path*"
+        "destination": "https://tasky-rm-backend.vercel.app/:path*"
       }
-    ]
+    ],
+    "staticFiles": {
+      "public": "public"
+    }
   }
   
