@@ -3,23 +3,16 @@
     "public": true,
     "builds": [
       {
-        "src": "package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "dist"
-        }
+        "src": "index.html",
+        "use": "@vercel/static"
       }
     ],
-    "rewrites": [
+    "routes": [
       {
-        "source": "/task/:path*",
-        "destination": "https://tasky-rm-backend.vercel.app/task/:path*"
-      },
-      {
-        "source": "/:path*",
-        "destination": "https://tasky-rm-backend.vercel.app/:path*"
+        "src": "/(.*)",
+        "dest": "frontend/index.html"
       }
     ]
+      
+    }
     
-  }
-  
