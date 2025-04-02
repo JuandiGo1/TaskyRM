@@ -44,13 +44,17 @@
 
             <section id="task-section" style="display: none;">
                 <div class="controls">
-                    <button id="logout-button">Cerrar Sesión</button>
+                    <div class="logout-container">
+                        <img id="logout-button" src="./rsc/log out logo.svg" alt="Cerrar sesión" class="logout-icon" />
+                        <div class="tooltip">Cerrar sesión</div>
+                    </div>
                     <select id="filter-tasks">
                         <option value="all">Todas las tareas</option>
                         <option value="pending">Pendientes</option>
                         <option value="completed">Completadas</option>
                     </select>
                 </div>
+                
 
                 <div id="task-form">
                     <h2>Agregar Nueva Tarea</h2>

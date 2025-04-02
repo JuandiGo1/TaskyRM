@@ -286,6 +286,53 @@ footer {
     background-color: #0b717c;
 }
 
+/* Contenedor del botón de cerrar sesión */
+.logout-container {
+    background-color: #D84040; /* Rojo */
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-container:hover {
+    background-color: #A31D1D; /* Rojo oscuro */
+}
+
+/* Icono del logout */
+.logout-icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(1); /* Hace que el SVG negro se vea blanco */
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logout-container:hover .tooltip {
+    opacity: 1;
+}
+
+
+
 /* Responsive: Flex Buttoms */
 @media (max-width: 600px) {
     .task-item {
@@ -310,3 +357,4 @@ footer {
         min-width: 120px;
     }
 }
+
