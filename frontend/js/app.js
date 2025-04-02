@@ -4,6 +4,7 @@ import { API_BASE_URL, SELECTORS } from './config.js';
 import Auth from './auth.js';
 import TaskManager from './tasks.js';
 import UI from './ui.js';
+import Modal from './modal.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Referencias a elementos DOM
@@ -17,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Variable para control de edición
     let currentlyEditingTask = null;
+
+    // Inicializar el modal
+    Modal.init();
 
     // Inicialización de la aplicación
     initApp();
@@ -140,21 +144,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            // Listener para eliminar tarea
-            taskItem.querySelector('.delete-btn').addEventListener('click', async () => {
-                if (confirm('¿Seguro que deseas eliminar esta tarea?')) {
+            // Listener para eliminar tarea - usar el modal personalizado
+            taskItem.querySelector('.delete-btn').addEventListener('click', () => {
+                Modal.confirm('¿Estás seguro de que deseas eliminar esta tarea?', async () => {
                     try {
                         await TaskManager.deleteTask(taskId);
                         loadTasks();
                     } catch (error) {
                         console.error('Error deleting task:', error);
                     }
-                }
+                });
             });
             
-            // Listener para editar tarea
+            // Reemplaza el listener para el botón de editar
             taskItem.querySelector('.edit-btn').addEventListener('click', () => {
-                startEditingTask(task);
+                // En lugar de startEditingTask(task), usar el modal
+                Modal.showEditModal(task, async (taskId, updatedTaskData) => {
+                    try {
+                        await TaskManager.updateTask(taskId, updatedTaskData);
+                        loadTasks();
+                    } catch (error) {
+                        console.error('Error updating task:', error);
+                        UI.showError(SELECTORS.ADD_TASK_ERROR, error.message);
+                    }
+                });
             });
         });
     }
@@ -166,9 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cargar datos de la tarea en el formulario
         UI.loadTaskForm(task, addTaskForm);
         
-        // Cambiar el comportamiento del formulario
-        addTaskForm.removeEventListener('submit', handleAddTask);
-        addTaskForm.addEventListener('submit', handleEditTask);
+        // // Cambiar el comportamiento del formulario
+        // addTaskForm.removeEventListener('submit', handleAddTask);
+        // addTaskForm.addEventListener('submit', handleEditTask);
     }
 
     // Handler para añadir una nueva tarea
@@ -214,9 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Restaurar estado original del formulario
             UI.resetTaskForm(addTaskForm);
             
-            // Restaurar comportamiento original
-            addTaskForm.removeEventListener('submit', handleEditTask);
-            addTaskForm.addEventListener('submit', handleAddTask);
+            // // Restaurar comportamiento original
+            // addTaskForm.removeEventListener('submit', handleEditTask);
+            // addTaskForm.addEventListener('submit', handleAddTask);
             
             currentlyEditingTask = null;
             loadTasks();
