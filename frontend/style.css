@@ -10,6 +10,25 @@
     font-style: italic;
 }
 
+.roboto-flex {
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0,
+      "wdth" 100,
+      "GRAD" 0,
+      "XOPQ" 96,
+      "XTRA" 468,
+      "YOPQ" 79,
+      "YTAS" 750,
+      "YTDE" -203,
+      "YTFI" 738,
+      "YTLC" 514,
+      "YTUC" 712;
+}
+
 body {
     font-family: "Nunito Sans", sans-serif;
     font-weight: 400;
@@ -26,7 +45,7 @@ body {
 .container {
     background-color: #FFFFFF;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 800px;
@@ -60,10 +79,10 @@ main {
 }
 
 #login-form, #register-form, #task-form, #task-list-container, .controls {
-    background-color: #F8F2DE;
+    background-color: #F2EFE7;
     padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #ECDCBF;
+    border-radius: 12px;
+    border: 1px solid #F8EDE3;
 }
 
 /* Forms */
@@ -73,13 +92,10 @@ form {
     gap: 10px;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="date"],
-textarea,
-select {
+input, textarea, select {
+    font-family: "Roboto Flex", sans-serif;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px solid #9ACBD0;
 }
 
@@ -90,7 +106,7 @@ textarea {
 button, select {
     padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #48A6A7;
     color: white;
     cursor: pointer;
@@ -120,7 +136,7 @@ button:hover {
     background-color: white;
     color: #333;
     border: 1px solid #9ACBD0;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 8px 10px;
     cursor: pointer;
 }
@@ -135,7 +151,7 @@ button:hover {
     background-color: #F8F2DE;
     margin-bottom: 8px;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 12px;
     border: 1px solid #ECDCBF;
     display: flex;
     justify-content: space-between;
@@ -192,7 +208,6 @@ footer {
     font-size: 0.9em;
 }
 
-
 /* Modal de confirmación */
 .modal {
     display: none;
@@ -212,9 +227,9 @@ footer {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: #F8F2DE;
     padding: 25px;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     width: 90%;
     max-width: 400px;
@@ -247,7 +262,7 @@ footer {
 .modal-button {
     padding: 8px 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.2s;
@@ -263,11 +278,35 @@ footer {
 }
 
 .confirm-button {
-    background-color: #d9534f;
+    background-color: #48A6A7;
     color: white;
 }
 
 .confirm-button:hover {
-    background-color: #c9302c;
+    background-color: #0b717c;
 }
 
+/* Responsive: Flex Buttoms */
+@media (max-width: 600px) {
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+        gap: 10px; 
+    }
+
+    .task-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .task-item:not(:last-child) {
+        margin-bottom: 15px; 
+    }
+
+    .task-actions button {
+        flex: 1; 
+        min-width: 120px;
+    }
+}
