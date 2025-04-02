@@ -134,41 +134,48 @@ document.addEventListener('DOMContentLoaded', () => {
             const taskId = taskItem.dataset.taskId;
             const task = TaskManager.getAllTasks().find(t => t._id === taskId);
             
-            // Listener para completar/descompletar tarea
-            taskItem.querySelector('.complete-btn').addEventListener('click', async () => {
-                try {
-                    await TaskManager.toggleComplete(taskId);
-                    loadTasks();
-                } catch (error) {
-                    console.error('Error toggling task completion:', error);
-                }
-            });
-            
-            // Listener para eliminar tarea - usar el modal personalizado
-            taskItem.querySelector('.delete-btn').addEventListener('click', () => {
-                Modal.confirm('¿Estás seguro de que deseas eliminar esta tarea?', async () => {
+            // Listener para completar tarea (solo si existe el botón)
+            const completeButton = taskItem.querySelector('.complete-btn');
+            if (completeButton) {
+                completeButton.addEventListener('click', async () => {
                     try {
-                        await TaskManager.deleteTask(taskId);
+                        await TaskManager.toggleComplete(taskId);
                         loadTasks();
                     } catch (error) {
-                        console.error('Error deleting task:', error);
+                        console.error('Error toggling task completion:', error);
                     }
                 });
-            });
+            }
             
-            // Reemplaza el listener para el botón de editar
-            taskItem.querySelector('.edit-btn').addEventListener('click', () => {
-                // En lugar de startEditingTask(task), usar el modal
-                Modal.showEditModal(task, async (taskId, updatedTaskData) => {
-                    try {
-                        await TaskManager.updateTask(taskId, updatedTaskData);
-                        loadTasks();
-                    } catch (error) {
-                        console.error('Error updating task:', error);
-                        UI.showError(SELECTORS.ADD_TASK_ERROR, error.message);
-                    }
+            // Listener para eliminar tarea
+            const deleteButton = taskItem.querySelector('.delete-btn');
+            if (deleteButton) {
+                deleteButton.addEventListener('click', () => {
+                    Modal.confirm('¿Estás seguro de que deseas eliminar esta tarea?', async () => {
+                        try {
+                            await TaskManager.deleteTask(taskId);
+                            loadTasks();
+                        } catch (error) {
+                            console.error('Error deleting task:', error);
+                        }
+                    });
                 });
-            });
+            }
+            
+            // Listener para editar tarea
+            const editButton = taskItem.querySelector('.edit-btn');
+            if (editButton) {
+                editButton.addEventListener('click', () => {
+                    Modal.showEditModal(task, async (taskId, updatedTaskData) => {
+                        try {
+                            await TaskManager.updateTask(taskId, updatedTaskData);
+                            loadTasks();
+                        } catch (error) {
+                            console.error('Error updating task:', error);
+                        }
+                    });
+                });
+            }
         });
     }
 
