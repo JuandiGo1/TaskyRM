@@ -4,13 +4,16 @@
     "builds": [
       {
         "src": "frontend/index.html",
-        "use": "@vercel/static"
+        "use": "@vercel/static",
+        "config": {
+        "distDir": "frontend"
+      }
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/index.html"
+        "dest": "frontend/index.html"
       }
     ]
       
