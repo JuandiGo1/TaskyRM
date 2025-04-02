@@ -37,7 +37,11 @@ const UI = {
             taskContent.innerHTML = `
                 <h3>${task.title}</h3>
                 <p>${task.description || ''}</p>
-                ${task.dueDate ? `<p>Vence: ${new Date(task.dueDate).toLocaleDateString()}</p>` : ''}
+                ${task.dueDate ? `<p>Vence: ${new Date(task.dueDate).toLocaleDateString('es-MX', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+            })}</p>` : ''}
                 <p>Prioridad: ${task.priority}</p>
             `;
             taskItem.appendChild(taskContent);
@@ -45,11 +49,22 @@ const UI = {
             // Botones de acción
             const taskActions = document.createElement('div');
             taskActions.className = 'task-actions';
-            taskActions.innerHTML = `
-                <button class="complete-btn">${task.complete ? 'Descompletar' : 'Completar'}</button>
-                <button class="edit-btn">Editar</button>
+            let buttonsHTML = '';
+
+            // Solo mostrar el botón Completar si la tarea NO está completada
+            if (!task.complete) {
+                // Solo para tareas NO completadas: mostrar botones Completar y Editar
+                buttonsHTML += `<button class="complete-btn">Completar</button>`;
+                buttonsHTML += `<button class="edit-btn">Editar</button>`;
+            }
+
+            // Siempre mostrar los botones de editar y eliminar
+            buttonsHTML += `
+                
                 <button class="delete-btn">Eliminar</button>
             `;
+
+            taskActions.innerHTML = buttonsHTML;
             taskItem.appendChild(taskActions);
 
             taskListElement.appendChild(taskItem);
