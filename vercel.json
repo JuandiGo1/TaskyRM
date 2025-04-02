@@ -3,17 +3,15 @@
     "public": true,
     "builds": [
       {
-        "src": "frontend/index.html",
-        "use": "@vercel/static",
-        "config": {
-        "distDir": "frontend"
-      }
+        "src": "frontend/public/**",
+        "use": "@vercel/static"
+        
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "frontend/index.html"
+        "dest": "frontend/public/index.html"
       }
     ]
       
