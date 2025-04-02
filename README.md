@@ -35,7 +35,7 @@ El backend de TaskyRM expone las siguientes rutas:
 
 Para **TaskyRM** hemos desarrollado una **interfaz sencilla** utilizando **JavaScript, HTML y CSS**, desplegada en **Vercel**.
 
-Puedes encontrar el código en el siguiente repositorio: [Repositorio del Frontend](https://github.com/JuandiGo1/TaskyRM_Frontend) *(Reemplaza con el link del repo del front)*
+Puedes encontrar el código en el siguiente repositorio: [Repositorio del Frontend](https://github.com/JuandiGo1/TaskyRM_Frontend) 
 
 ---
 
