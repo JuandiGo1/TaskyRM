@@ -7,6 +7,7 @@ Permite a los usuarios **registrarse, iniciar sesión y administrar sus tareas**
 ---
 
 ## 🌍 Despliegue y Repositorios
+Puedes ver la app completamente funcional en [TaskyRM](https://tasky-rm-frontedn.vercel.app)
 
 Este es solo un repositorio resumen. Puedes encontrar más información y el código completo en:
 
